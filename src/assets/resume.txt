@@ -1,0 +1,165 @@
+\documentclass[10.5pt,a4paper]{article}
+
+\usepackage[left=0.7in, right=0.7in, top=0.6in, bottom=0.6in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{fontspec}
+
+\setmainfont{Arial}
+
+\definecolor{customblue}{HTML}{2E3092}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
+
+% Section formatting
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+\titleformat{\section}
+  {\large\bfseries\color{customblue}}
+  {}{0em}{}[\titlerule]
+
+% Tight bullet points
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=15pt}
+
+% Reduce paragraph spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+
+\begin{document}
+
+%--------------------
+% HEADER
+%--------------------
+
+\noindent
+{\Large \textbf{Ayush Bhatia}}
+
+\vspace{2pt}
+
+\noindent
+LinkedIn: \href{https://www.linkedin.com/in/ayush10023/}{linkedin.com/in/ayush10023}
+\hfill
+Email: \href{mailto:ayushbhatia456@gmail.com}{ayushbhatia456@gmail.com}
+
+\noindent
+GitHub: \href{https://github.com/Ayush-200}{github.com/Ayush-200}
+\hfill
+Mobile: +91-9041070560
+
+
+\vspace{1pt}
+
+%--------------------
+% SKILLS
+%--------------------
+
+\section*{SKILLS}
+
+\textcolor{customblue}{\textbf{Languages:}} C++, C, Java, Python, JavaScript, TypeScript \\
+\textcolor{customblue}{\textbf{Frontend:}} React, Tailwind CSS, Bootstrap \\
+\textcolor{customblue}{\textbf{Backend:}} Node.js, Express.js, RESTful APIs, JWT Authentication \\
+\textcolor{customblue}{\textbf{Databases:}} PostgreSQL, MongoDB \\
+\textcolor{customblue}{\textbf{DevOps:}} Docker, Google Cloud Run, CI/CD, Linux \\
+\textcolor{customblue}{\textbf{Tools:}} Git, GitHub, Postman, Redis, Kafka, Socket.IO \\
+\textcolor{customblue}{\textbf{Concepts:}} Data Structures \& Algorithms, OOP, System Design, Microservices, Distributed Systems
+
+%--------------------
+% EXPERIENCE
+%--------------------
+
+\section*{Experience}
+
+\textcolor{customblue}{\textbf{SwiftCause | Software Development Intern}} \;|\;
+\href{https://github.com/YNVSolutions/SwiftCause_Web}{GitHub} \;|\;
+\href{https://swift-cause-web.vercel.app}{Link}
+\hfill Nov'25 -- Present
+
+\begin{itemize}
+    \item Led a team to build a full-stack fundraising platform using React and Node.js with Firebase and Firebase Authentication, supporting \textbf{500+ concurrent users}.
+    \item Architected a scalable Feature-Sliced Design structure and developed RESTful APIs with role-based access control and JWT, supporting \textbf{200+ simultaneous interactions}.
+    \item Integrated Stripe with webhook-based events, UK Gift Aid workflows, and automated emails via SendGrid, processing \textbf{£50,000+ donations monthly}.
+    \item Built real-time analytics dashboards and automated compliance reporting with Puppeteer, reducing manual effort by \textbf{80\%}.
+\end{itemize}
+
+%--------------------
+% PROJECTS
+%--------------------
+
+\section*{Projects}
+
+\textcolor{customblue}{\textbf{Stream Talk}} 
+\textit{(MERN, WebRTC, FFmpeg, Cloudinary, AWS EC2)} 
+\href{https://github.com/Ayush-200/streamApp}{GitHub} \;|\;
+\href{https://streamapp-webapp.onrender.com}{Link}
+\hfill Nov'25 -- Present
+
+
+
+\begin{itemize}
+    \item Engineered a real-time peer-to-peer video communication system supporting 50+ concurrent users with $<$200ms latency using WebRTC and Socket.IO.
+    \item Designed and implemented a WebSocket-based signaling server with Node.js and Express, handling 100+ session initiations per minute and ensuring 99.9\% connection reliability.
+    \item Integrated FFmpeg for adaptive bitrate streaming and media processing, improving video quality and reducing bandwidth usage by up to 40\%.
+\end{itemize}
+
+\textcolor{customblue}{\textbf{Cloud IDE}} 
+\textit{(Next.js, TypeScript, MongoDB, AWS Fargate, AWS EC2)} 
+\href{https://github.com/Ayush-200/cloudIDE_production}{GitHub} \;|\;
+\href{https://github.com/Ayush-200/cloudIDE_production}{Link}
+\hfill Oct'25 -- Nov'25
+
+\begin{itemize}
+    \item Produced a cloud-based IDE enabling secure code execution in isolated Docker containers, orchestrated using AWS ECS with Fargate, supporting \textbf{100+ simultaneous active users}.
+    \item Modeled and deployed scalable backend services using Node.js and Express, exposing RESTful APIs for project management, file operations, and execution control, handling \textbf{500+ API requests per minute}.
+    \item Implemented dynamic container provisioning and resource isolation, ensuring \textbf{zero security breaches during multi-tenant testing} and maintaining \textbf{99.9\% uptime}.
+    \item Constructed a responsive frontend using React with React Arborist for hierarchical file system visualization and Zustand for lightweight state management, rendering \textbf{1000+ files in under 2 seconds}.
+\end{itemize}
+
+%--------------------
+% TRAINING
+%--------------------
+
+\section*{Training}
+
+\textbf{Data Structures and Algorithms | Cipher Schools}
+\href{https://drive.google.com/file/d/14RPhK-8Fr9UH6-CYaSA4ET6JFfM9uwgg/view?usp=sharing}{Certificate} \;|\;\hfill Jul'25
+\begin{itemize}
+    \item Covered arrays, linked lists, stacks, queues, trees, recursion, sorting, and searching.
+    \item Practiced time and space complexity optimization.
+    \item Strengthened DSA concepts through problem-solving and solved 200+ questions across multiple topics.
+\end{itemize}
+
+%--------------------
+% CERTIFICATES
+%--------------------
+
+\section*{Certificates}
+
+Cloud Computing |
+\href{https://drive.google.com/file/d/1rUKB_XEnmj2qYT1xbB0YUk-bez0WxxqF/view?usp=sharing}{NPTEL}
+\hfill Oct'25 \\
+Computer Networking
+\href{https://www.coursera.org/account/accomplishments/verify/JVG44IY8FB13}{Coursera}
+\hfill Dec'24 \\
+TCP/IP Advanced Protocols | 
+\href{https://www.coursera.org/account/accomplishments/verify/HWE2W4FA7T6J}{Coursera}
+\hfill Dec'24
+
+%--------------------
+% EDUCATION
+%--------------------
+
+\section*{Education}
+
+\textbf{Lovely Professional University} \hfill Phagwara, Punjab \\
+B.Tech -- Computer Science and Engineering \hfill Aug'23 -- Present \\
+CGPA: 8.92 \vspace{-2pt} \\
+
+\textbf{Manav Public School} \hfill Amritsar, Punjab \\
+Intermediate (68.5\%) \hfill Apr'22 -- Mar'23 \vspace{-2pt} \\
+Matriculation (95\%) \hfill Apr'20 -- Mar'21
+
+\end{document}
