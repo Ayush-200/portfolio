@@ -1,7 +1,10 @@
 import ayushPhoto from './assets/ayush.png';
+import nptelCert from './assets/nptel.png';
+import courseraCert from './assets/coursera.png';
+import courseraCert2 from './assets/coursera2.png';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUpRight, Copy, Check, Code2, Database, Cloud, Wrench, Box, GitBranch } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Copy, Check, Code2, Database, Cloud, Wrench, Box, GitBranch, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // ─── Animation Presets ────────────────────────────────────────────────────────
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -159,18 +162,10 @@ const skills = [
   },
 ];
 
-const education = {
-  school:  'Lovely Professional University',
-  degree:  'B.Tech · Computer Science & Engineering',
-  period:  'Aug 2023 – Present',
-  cgpa:    '8.92',
-};
-
 const certs = [
-  { name: 'Cloud Computing',            issuer: 'NPTEL',          date: 'Oct 2025', href: 'https://drive.google.com/file/d/1rUKB_XEnmj2qYT1xbB0YUk-bez0WxxqF/view' },
-  { name: 'Computer Networking',        issuer: 'Coursera',       date: 'Dec 2024', href: 'https://www.coursera.org/account/accomplishments/verify/JVG44IY8FB13' },
-  { name: 'TCP/IP Advanced Protocols',  issuer: 'Coursera',       date: 'Dec 2024', href: 'https://www.coursera.org/account/accomplishments/verify/HWE2W4FA7T6J' },
-  { name: 'Data Structures & Algorithms', issuer: 'Cipher Schools', date: 'Jul 2025', href: 'https://drive.google.com/file/d/14RPhK-8Fr9UH6-CYaSA4ET6JFfM9uwgg/view' },
+  { name: 'Cloud Computing', issuer: 'NPTEL', date: 'Oct 2025', href: 'https://drive.google.com/file/d/1rUKB_XEnmj2qYT1xbB0YUk-bez0WxxqF/view', image: nptelCert },
+  { name: 'Computer Networking', issuer: 'Coursera', date: 'Dec 2024', href: 'https://www.coursera.org/account/accomplishments/verify/JVG44IY8FB13', image: courseraCert },
+  { name: 'TCP/IP Advanced Protocols', issuer: 'Coursera', date: 'Dec 2024', href: 'https://www.coursera.org/account/accomplishments/verify/HWE2W4FA7T6J', image: courseraCert2 },
 ];
 
 // ─── Small reusable pieces ────────────────────────────────────────────────────
@@ -793,71 +788,117 @@ function Skills() {
 
 // ─── Education ─────────────────────────────────────────────────────────────────
 function Education() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % certs.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + certs.length) % certs.length);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000); // Auto-advance every 5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="certifications" className="py-28 md:py-36">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <SectionHeader label="Certifications" />
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-14">
-          {/* Degree */}
-          <motion.div
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
-            <motion.p variants={fadeUp} className="font-mono text-[10px] tracking-widest text-subtle mb-4">
-              {education.period}
-            </motion.p>
-            <div className="overflow-hidden mb-2">
-              <motion.h3
-                variants={textReveal}
-                className="font-display font-bold text-2xl md:text-3xl tracking-tight"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="relative"
+        >
+          {/* Carousel Container */}
+          <div className="relative overflow-hidden rounded-3xl bg-surface border border-white/5">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="relative"
               >
-                {education.school}
-              </motion.h3>
-            </div>
-            <motion.p variants={fadeUp} className="text-subtle font-light mb-1">{education.degree}</motion.p>
-            <motion.p variants={fadeUp} className="font-mono text-sm text-gold">{education.cgpa} CGPA</motion.p>
-          </motion.div>
-
-          {/* Certifications */}
-          <motion.div
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
-            <motion.p variants={fadeUp} className="font-mono text-[10px] tracking-widest text-subtle mb-6">
-              Certifications
-            </motion.p>
-            <ul className="space-y-4">
-              {certs.map((c) => (
-                <motion.li key={c.name} variants={fadeUp}>
-                  <a
-                    href={c.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-between py-3 border-b border-white/5 hover:border-white/12 transition-colors duration-300"
-                  >
-                    <div>
-                      <p className="text-sm text-text/80 font-medium group-hover:text-text transition-colors duration-300">
-                        {c.name}
-                      </p>
-                      <p className="font-mono text-[10px] text-ghost mt-0.5">
-                        {c.issuer} · {c.date}
-                      </p>
-                    </div>
-                    <ArrowUpRight
-                      size={14}
-                      className="text-ghost group-hover:text-accent transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                {/* Certificate Image */}
+                <a
+                  href={certs[currentIndex].href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block group"
+                >
+                  <div className="relative aspect-[16/11] overflow-hidden">
+                    <img
+                      src={certs[currentIndex].image}
+                      alt={certs[currentIndex].name}
+                      className="w-full h-full object-contain bg-white/5 transition-transform duration-500 group-hover:scale-105"
                     />
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-canvas/90 via-canvas/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                      <span className="flex items-center gap-2 text-accent font-semibold">
+                        View Certificate
+                        <ArrowUpRight size={16} />
+                      </span>
+                    </div>
+                  </div>
+                </a>
+
+                {/* Certificate Info */}
+                <div className="p-8 md:p-10">
+                  <h3 className="font-display font-bold text-2xl md:text-3xl text-text/90 mb-3">
+                    {certs[currentIndex].name}
+                  </h3>
+                  <p className="font-mono text-sm text-subtle">
+                    {certs[currentIndex].issuer} · {certs[currentIndex].date}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-canvas/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-text/70 hover:text-accent hover:border-accent/50 transition-all duration-300 hover:scale-110"
+              aria-label="Previous certificate"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-canvas/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-text/70 hover:text-accent hover:border-accent/50 transition-all duration-300 hover:scale-110"
+              aria-label="Next certificate"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+
+          {/* Indicators */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            {certs.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`transition-all duration-300 rounded-full ${
+                  idx === currentIndex
+                    ? 'w-12 h-2 bg-accent'
+                    : 'w-2 h-2 bg-white/20 hover:bg-white/40'
+                }`}
+                aria-label={`Go to certificate ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Certificate Count */}
+          <p className="text-center mt-6 font-mono text-sm text-subtle">
+            {currentIndex + 1} / {certs.length}
+          </p>
+        </motion.div>
       </div>
     </section>
   );
