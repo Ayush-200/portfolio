@@ -175,16 +175,6 @@ const certs = [
 
 // ─── Small reusable pieces ────────────────────────────────────────────────────
 
-/** The thin horizontal rule that grows in from the left */
-function SectionRule() {
-  return (
-    <motion.div
-      variants={lineGrow}
-      className="h-px bg-white/8 flex-1"
-    />
-  );
-}
-
 /** Section header: label + rule */
 function SectionHeader({ label }: { label: string }) {
   return (
