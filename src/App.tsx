@@ -183,8 +183,8 @@ function SectionHeader({ label }: { label: string }) {
       <div className="overflow-hidden mb-8">
         <motion.h2
           variants={textReveal}
-          className="font-display font-extrabold tracking-tight leading-[0.9]"
-          style={{ fontSize: 'clamp(56px, 10vw, 120px)' }}
+          className="font-display font-extrabold tracking-tight leading-[0.9] break-words"
+          style={{ fontSize: 'clamp(48px, 8vw, 120px)' }}
         >
           {label}
         </motion.h2>
