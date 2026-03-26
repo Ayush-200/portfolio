@@ -7,10 +7,10 @@
   --font-display: 'Syne', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Background scale — very dark midnight navy */
-  --color-canvas:  #08090E;
-  --color-surface: #0D0F1C;
-  --color-layer:   #121526;
+  /* Background scale — full dark black */
+  --color-canvas:  #000000;
+  --color-surface: #0a0a0a;
+  --color-layer:   #111111;
 
   /* Typography scale — warm-cool off-white */
   --color-text:    #C8C4E5;
@@ -34,9 +34,9 @@
   body {
     @apply bg-canvas text-text font-sans antialiased overflow-x-hidden;
     margin: 0;
-    /* Subtle radial glow from top — gives depth without aurora-blob chaos */
-    background-image:
-      radial-gradient(ellipse 90% 45% at 50% -5%, rgba(134, 117, 227, 0.09) 0%, transparent 65%);
+    /* Pure black background */
+    background-image: none;
+    background-color: #000000;
   }
 
   ::selection {

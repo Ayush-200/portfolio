@@ -1,7 +1,7 @@
 import ayushPhoto from './assets/ayush.png';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUpRight, Copy, Check } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Copy, Check, Code2, Database, Cloud, Wrench, Box, GitBranch } from 'lucide-react';
 
 // ─── Animation Presets ────────────────────────────────────────────────────────
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -54,20 +54,6 @@ const experience = {
 const projects = [
   {
     number:   '01',
-    name:     'Stream Talk',
-    category: 'Real-time Communication',
-    period:   'Nov 2025 – Present',
-    github:   'https://github.com/Ayush-200/streamApp',
-    link:     'https://streamapp-webapp.onrender.com',
-    bullets: [
-      'Engineered a real-time P2P video system supporting 50+ concurrent users with <200 ms latency via WebRTC and Socket.IO.',
-      'Designed a WebSocket signaling server capable of 100+ session initiations per minute at 99.9% connection reliability.',
-      'Integrated FFmpeg for adaptive bitrate streaming, cutting bandwidth usage by up to 40%.',
-    ],
-    tags: ['WebRTC', 'Socket.IO', 'FFmpeg', 'Node.js', 'MongoDB', 'AWS EC2'],
-  },
-  {
-    number:   '02',
     name:     'CloudIDE',
     category: 'Cloud Architecture',
     period:   'Oct – Nov 2025',
@@ -81,16 +67,96 @@ const projects = [
     ],
     tags: ['Docker', 'AWS ECS', 'Fargate', 'Next.js', 'TypeScript', 'Zustand'],
   },
+  {
+    number:   '02',
+    name:     'Stream Talk',
+    category: 'Real-time Communication',
+    period:   'Nov 2025 – Present',
+    github:   'https://github.com/Ayush-200/streamApp',
+    link:     'https://streamapp-webapp.onrender.com',
+    bullets: [
+      'Engineered a real-time P2P video system supporting 50+ concurrent users with <200 ms latency via WebRTC and Socket.IO.',
+      'Designed a WebSocket signaling server capable of 100+ session initiations per minute at 99.9% connection reliability.',
+      'Integrated FFmpeg for adaptive bitrate streaming, cutting bandwidth usage by up to 40%.',
+    ],
+    tags: ['WebRTC', 'Socket.IO', 'FFmpeg', 'Node.js', 'MongoDB', 'AWS EC2'],
+  },
 ];
 
 const skills = [
-  { label: 'Languages', items: ['C++', 'C', 'Java', 'Python', 'JavaScript', 'TypeScript'] },
-  { label: 'Frontend',  items: ['React', 'Next.js', 'Tailwind CSS', 'Bootstrap'] },
-  { label: 'Backend',   items: ['Node.js', 'Express.js', 'RESTful APIs', 'JWT'] },
-  { label: 'Databases', items: ['PostgreSQL', 'MongoDB'] },
-  { label: 'DevOps',    items: ['Docker', 'Google Cloud Run', 'CI/CD', 'Linux', 'AWS ECS'] },
-  { label: 'Tools',     items: ['Git', 'Postman', 'Redis', 'Kafka', 'Socket.IO'] },
-  { label: 'Concepts',  items: ['DSA', 'OOP', 'System Design', 'Microservices', 'Distributed Systems'] },
+  { 
+    label: 'Languages', 
+    icon: Code2,
+    items: [
+      { name: 'C++', icon: '🔷' },
+      { name: 'C', icon: '🔵' },
+      { name: 'Java', icon: '☕' },
+      { name: 'Python', icon: '🐍' },
+      { name: 'JavaScript', icon: '🟨' },
+      { name: 'TypeScript', icon: '🔷' }
+    ]
+  },
+  { 
+    label: 'Frontend', 
+    icon: Box,
+    items: [
+      { name: 'React', icon: '⚛️' },
+      { name: 'Next.js', icon: '▲' },
+      { name: 'Tailwind CSS', icon: '🎨' },
+      { name: 'Bootstrap', icon: '🅱️' }
+    ]
+  },
+  { 
+    label: 'Backend', 
+    icon: Database,
+    items: [
+      { name: 'Node.js', icon: '🟢' },
+      { name: 'Express.js', icon: '🚂' },
+      { name: 'RESTful APIs', icon: '🔌' },
+      { name: 'JWT', icon: '🔐' }
+    ]
+  },
+  { 
+    label: 'Databases', 
+    icon: Database,
+    items: [
+      { name: 'PostgreSQL', icon: '🐘' },
+      { name: 'MongoDB', icon: '🍃' }
+    ]
+  },
+  { 
+    label: 'DevOps', 
+    icon: Cloud,
+    items: [
+      { name: 'Docker', icon: '🐳' },
+      { name: 'Google Cloud Run', icon: '☁️' },
+      { name: 'CI/CD', icon: '🔄' },
+      { name: 'Linux', icon: '🐧' },
+      { name: 'AWS ECS', icon: '☁️' }
+    ]
+  },
+  { 
+    label: 'Tools', 
+    icon: Wrench,
+    items: [
+      { name: 'Git', icon: '📦' },
+      { name: 'Postman', icon: '📮' },
+      { name: 'Redis', icon: '🔴' },
+      { name: 'Kafka', icon: '📊' },
+      { name: 'Socket.IO', icon: '🔌' }
+    ]
+  },
+  { 
+    label: 'Concepts', 
+    icon: GitBranch,
+    items: [
+      { name: 'DSA', icon: '🧮' },
+      { name: 'OOP', icon: '🎯' },
+      { name: 'System Design', icon: '🏗️' },
+      { name: 'Microservices', icon: '🔗' },
+      { name: 'Distributed Systems', icon: '🌐' }
+    ]
+  },
 ];
 
 const education = {
@@ -127,15 +193,21 @@ function SectionHeader({ label }: { label: string }) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-60px' }}
-      className="flex items-center gap-6 mb-16 md:mb-20"
+      className="mb-20 md:mb-28"
     >
-      <motion.span
-        variants={fadeUp}
-        className="font-mono text-[10px] tracking-[0.35em] text-subtle uppercase"
-      >
-        {label}
-      </motion.span>
-      <SectionRule />
+      <div className="overflow-hidden mb-8">
+        <motion.h2
+          variants={textReveal}
+          className="font-display font-extrabold tracking-tight leading-[0.9]"
+          style={{ fontSize: 'clamp(56px, 10vw, 120px)' }}
+        >
+          {label}
+        </motion.h2>
+      </div>
+      <motion.div
+        variants={lineGrow}
+        className="h-[2px] bg-gradient-to-r from-accent/60 via-accent/20 to-transparent w-full"
+      />
     </motion.div>
   );
 }
@@ -159,7 +231,7 @@ function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = ['Experience', 'Projects', 'Skills', 'Education', 'Contact'];
+  const links = ['About', 'Projects', 'Experience', 'Tech Stack', 'Certifications', 'Contact'];
 
   return (
     <motion.header
@@ -186,7 +258,7 @@ function Nav() {
           {links.map((link) => (
             <a
               key={link}
-              href={`#${link.toLowerCase()}`}
+              href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
               className="text-xs tracking-widest text-subtle hover:text-text transition-colors duration-300 font-medium"
             >
               {link}
@@ -374,12 +446,130 @@ function Hero() {
   );
 }
 
+// ─── About Me ──────────────────────────────────────────────────────────────────
+function AboutMe() {
+  return (
+    <section id="about" className="py-28 md:py-36">
+      <div className="max-w-6xl mx-auto px-6 md:px-10">
+        <SectionHeader label="About Me" />
+
+        <motion.div
+          variants={stagger(0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid md:grid-cols-2 gap-12 md:gap-16"
+        >
+          {/* Left column - Main content */}
+          <div>
+            <div className="overflow-hidden mb-8">
+              <motion.h2
+                variants={textReveal}
+                className="font-display font-bold tracking-tight leading-tight"
+                style={{ fontSize: 'clamp(28px, 4vw, 42px)' }}
+              >
+                Building the future,
+                <br />
+                one system at a time.
+              </motion.h2>
+            </div>
+
+            <motion.div variants={fadeUp} className="space-y-5 text-text/75 leading-relaxed">
+              <p>
+                I'm Ayush Bhatia, currently pursuing a B.Tech in Computer Science & Engineering at 
+                Lovely Professional University. I'm a full-stack web developer with hands-on experience 
+                in currently trending technologies.
+              </p>
+              <p>
+                My focus is on creating modern, interactive, and scalable systems. My interests heavily 
+                lie in full-stack web development, cloud infrastructure, and system design. I focus on 
+                delivering clean, performant, and engaging user experiences.
+              </p>
+              <p>
+                When I'm not coding, you'll find me exploring new technologies, contributing to open-source 
+                projects, or diving deep into distributed systems architecture.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-3">
+              <a
+                href="#contact"
+                className="group flex items-center gap-2 font-semibold text-sm px-6 py-3 rounded-full bg-accent text-canvas hover:bg-accent/90 transition-colors duration-300"
+              >
+                Get in touch
+                <ArrowUpRight
+                  size={14}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+              <a
+                href="https://github.com/Ayush-200"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-sm text-subtle hover:text-text border border-white/8 hover:border-white/20 rounded-full px-6 py-3 transition-all duration-300"
+              >
+                <Github size={14} />
+                View GitHub
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right column - Stats & highlights */}
+          <motion.div variants={fadeUp} className="space-y-8">
+            {/* Quick stats */}
+            <div className="p-8 rounded-2xl bg-surface border border-white/5">
+              <p className="font-mono text-[10px] tracking-widest text-subtle uppercase mb-6">
+                Quick Stats
+              </p>
+              <div className="space-y-6">
+                {[
+                  { label: 'Problems Solved', value: '250+', desc: 'DSA & Competitive Programming' },
+                  { label: 'Apps in Production', value: '3+', desc: 'Full-stack applications' },
+                  { label: 'CGPA', value: '8.92', desc: 'Academic Excellence' },
+                ].map((stat) => (
+                  <div key={stat.label} className="flex items-baseline justify-between gap-4">
+                    <div>
+                      <p className="text-sm text-text/80 font-medium">{stat.label}</p>
+                      <p className="font-mono text-[9px] text-ghost mt-0.5">{stat.desc}</p>
+                    </div>
+                    <p className="font-display font-bold text-gold text-2xl">{stat.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Current focus */}
+            <div className="p-8 rounded-2xl bg-surface border border-white/5">
+              <p className="font-mono text-[10px] tracking-widest text-subtle uppercase mb-4">
+                Currently Exploring
+              </p>
+              <ul className="space-y-3">
+                {[
+                  'Distributed Systems Architecture',
+                  'Cloud-Native Applications',
+                  'Real-time Communication Systems',
+                  'Microservices & Scalability',
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 items-start">
+                    <span className="mt-[7px] shrink-0 w-1.5 h-1.5 rounded-full bg-accent/60" />
+                    <span className="text-sm text-text/70 font-light">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Experience ────────────────────────────────────────────────────────────────
 function Experience() {
   return (
     <section id="experience" className="py-28 md:py-36">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <SectionHeader label="Experience" />
+        <SectionHeader label="Work Experience" />
 
         <motion.div
           variants={stagger(0.1)}
@@ -470,7 +660,7 @@ function Projects() {
   return (
     <section id="projects" className="py-28 md:py-36">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <SectionHeader label="Projects" />
+        <SectionHeader label="Featured Projects" />
 
         <div className="space-y-0">
           {projects.map((p, idx) => (
@@ -562,41 +752,49 @@ function Projects() {
 // ─── Skills ────────────────────────────────────────────────────────────────────
 function Skills() {
   return (
-    <section id="skills" className="py-28 md:py-36">
+    <section id="tech-stack" className="py-28 md:py-36">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <SectionHeader label="Skills" />
+        <SectionHeader label="Tech Stack" />
 
         <motion.div
           variants={stagger(0.06)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="space-y-0"
+          className="grid md:grid-cols-2 gap-6"
         >
-          {skills.map((group, idx) => (
-            <motion.div
-              key={group.label}
-              variants={fadeUp}
-              className={`grid grid-cols-[100px_1fr] md:grid-cols-[180px_1fr] gap-6 py-6 items-baseline ${
-                idx < skills.length - 1 ? 'border-b border-white/5' : ''
-              }`}
-            >
-              <span className="font-mono text-[10px] tracking-widest text-subtle uppercase shrink-0">
-                {group.label}
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <span
-                    key={item}
-                    className="text-sm text-text/70 font-light"
-                  >
-                    {item}
-                    <span className="text-ghost mx-2">·</span>
+          {skills.map((group) => {
+            const IconComponent = group.icon;
+            return (
+              <motion.div
+                key={group.label}
+                variants={fadeUp}
+                className="p-6 rounded-2xl bg-surface border border-white/5 hover:border-white/10 transition-all duration-300"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+                    <IconComponent size={20} className="text-accent" />
+                  </div>
+                  <span className="font-mono text-[11px] tracking-widest text-text/80 uppercase font-semibold">
+                    {group.label}
                   </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {group.items.map((item) => (
+                    <div
+                      key={item.name}
+                      className="group flex items-center gap-2 px-4 py-2.5 rounded-xl bg-canvas/50 border border-white/5 hover:border-accent/30 hover:bg-canvas/80 transition-all duration-300"
+                    >
+                      <span className="text-lg">{item.icon}</span>
+                      <span className="text-sm text-text/70 group-hover:text-text/90 font-light transition-colors duration-300">
+                        {item.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
@@ -606,9 +804,9 @@ function Skills() {
 // ─── Education ─────────────────────────────────────────────────────────────────
 function Education() {
   return (
-    <section id="education" className="py-28 md:py-36">
+    <section id="certifications" className="py-28 md:py-36">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <SectionHeader label="Education & Certifications" />
+        <SectionHeader label="Certifications" />
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-14">
           {/* Degree */}
@@ -817,8 +1015,9 @@ export default function App() {
     <>
       <Nav />
       <Hero />
-      <Experience />
+      <AboutMe />
       <Projects />
+      <Experience />
       <Skills />
       <Education />
       <Contact />
